@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">로또365_MVVM</string>
+    <string name="admob_app_id">ca-app-pub-1843525697242385~3217258610</string>
+    <string name="admob_app_test_banner_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="admob_app_test_reward_id">ca-app-pub-3940256099942544/5224354917</string>
+    <string name="setting_system_msg">- 로또365의 모든 정책은 구글 플레이스토어의 정책에 준합니다.\n- 로또365는 어떠한 개인정보도 요구하지 않습니다.\n- 꿈과 관련하여 키워드 추가요청시 아래 관리자 메일로 연락주시기 바립니다.\n- 추가 문의 및 건의사항은 아래 관리자 메일로 연락주시기 바립니다.</string>
+    <string name="setting_system_msg1">- 로또365앱을 사용하면서 느낀점을 솔직하게 평가부탁드립니다.\n- 여러분들이 주신 의견은 주기적으로 모니터링하며 반영하도록 하겠습니다.</string>
+</resources>
