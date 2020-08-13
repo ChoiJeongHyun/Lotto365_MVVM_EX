@@ -13,27 +13,6 @@ import javax.inject.Singleton
 @Singleton
 class AppRepository @Inject constructor(private val appDatabase: AppDatabase, private val prefDatabase: PrefDatabase) {
 
-    //
-
-    //    private val historyDAO: HistoryDAO by lazy {
-    //        val db = AppDatabase.getInstance()
-    //        db.historyDAO()
-    //    }
-    //
-    //    private val localDB: PrefDatabase by lazy {
-    //        val db = PrefDatabase(context)
-    //        db
-    //    }
-
-    suspend fun selectTest(uniqueId: String): History? {
-
-        return withContext(CoroutineScope(Dispatchers.IO).coroutineContext) {
-            appDatabase.historyDAO().select(uniqueId)
-        }
-
-        //        return d.await()
-
-    }
 
 
     suspend fun select(uniqueId: String): History? {
@@ -44,18 +23,9 @@ class AppRepository @Inject constructor(private val appDatabase: AppDatabase, pr
 
     }
 
-    fun selectTC(): LiveData<List<History>>? {
-        //        PLog.e("call data !!!!!! : ${appDatabase.historyDAO().selectAll().value}")
-        return null
-    }
 
 
     suspend fun selectAll(): List<History>? {
-        //        return appDatabase.historyDAO().selectAll()
-
-        //        return CoroutineScope(Dispatchers.IO).async {
-        //            appDatabase.historyDAO().selectAll()
-        //        }.await()
 
         //        CoroutineScope(Dispatchers.IO).async {
         //            appDatabase.historyDAO().selectAll()
