@@ -1,19 +1,18 @@
 package kr.co.example.lotto365.miniframework.database.dbmanager
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
+import androidx.room.*
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import kr.co.example.lotto365_mvp.MiniFrameWork.DataBase.Entity.History
-import kr.co.example.lotto365_mvvm.miniframework.DataBase.Converter.Converts
-import kr.co.example.lotto365_mvvm.miniframework.DataBase.DAO.HistoryDAO
+import kr.co.example.lotto365_mvvm.miniframework.database.entity.History
+import kr.co.example.lotto365_mvvm.miniframework.database.Converter.Converts
+import kr.co.example.lotto365_mvvm.miniframework.database.DAO.HistoryDAO
+import javax.inject.Singleton
 
 
-@Database(entities = [History::class], version = 1)
+@Database(entities = [History::class], version = 1, exportSchema = false)
 @TypeConverters(Converts::class)
+@Singleton
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

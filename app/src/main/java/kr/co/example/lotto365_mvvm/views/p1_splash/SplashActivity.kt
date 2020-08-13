@@ -2,15 +2,11 @@ package kr.co.example.lotto365_mvvm.views.p1_splash
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kr.co.example.lotto365.commonset.components.LottoActivity
-import kr.co.example.lotto365_mvp.Utils.PLog
-import kr.co.example.lotto365_mvvm.BR
 import kr.co.example.lotto365_mvvm.R
 import kr.co.example.lotto365_mvvm.common.components.ViewModelFactory
 import kr.co.example.lotto365_mvvm.databinding.ActivitySplashBinding
-import kr.co.example.lotto365_mvvm.miniframework.DataBase.PrefDatabase
 import kr.co.example.lotto365_mvvm.views.p2_main.MainActivity
 import javax.inject.Inject
 
@@ -27,9 +23,7 @@ class SplashActivity : LottoActivity<ActivitySplashBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
         val v = ViewModelProvider(this, factory).get(SplashViewModel::class.java)
-
         binding.vm = v
         binding.lifecycleOwner = this
 

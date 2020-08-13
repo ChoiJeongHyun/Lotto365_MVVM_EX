@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.co.example.lotto365_mvvm.views.p3_generate_number.RandomNumberViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@color/background_color">
+
+        <kr.co.example.lotto365_mvvm.widgets.ToolBar
+            android:id="@+id/view_random_number_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"
+            app:leftClick="@{true}"
+            app:toolbarLeftSrc="@drawable/icon_toolbar_back"
+            app:toolbarTitle="랜덤번호"
+            app:viewModel="@{vm}" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/view_random_number_adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_random_number_toolbar"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/admob_app_test_banner_id" />
+
+        <View
+            android:id="@+id/view_random_number_area_adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/view_random_number_toolbar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_random_number_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/view_random_number_area_adView"
+            android:layout_above="@id/view_random_number_btn_group"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:viewModel="@{vm}"
+            app:generateNumber="@{vm.randomNumberItems}"
+            />
+
+        <LinearLayout
+            android:id="@+id/view_random_number_btn_group"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp">
+
+            <kr.co.example.lotto365_mvvm.widgets.RoundButton
+                android:id="@+id/view_random_number_btn_all_save_number"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="전체 저장"
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                app:backgroundColorNormal="#4B46BE"
+                app:cornerRadius="16dp"
+                app:onClickListener="@{() -> vm.saveAllNumber()}"/>
+
+            <kr.co.example.lotto365_mvvm.widgets.RoundButton
+                android:id="@+id/view_random_number_btn_again_generate_number"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="30dp"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:text="다시 생성"
+                android:textSize="20dp"
+                app:backgroundColorNormal="#4B46BE"
+                app:cornerRadius="16dp"
+                app:onClickListener="@{() -> vm.setItems()}"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</layout>

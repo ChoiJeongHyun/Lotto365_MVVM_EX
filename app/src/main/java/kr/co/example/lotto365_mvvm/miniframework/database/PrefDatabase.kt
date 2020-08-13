@@ -1,4 +1,4 @@
-package kr.co.example.lotto365_mvvm.miniframework.DataBase
+package kr.co.example.lotto365_mvvm.miniframework.database
 
 import android.content.Context
 import kr.co.example.lotto365_mvp.Utils.Utils
@@ -11,8 +11,8 @@ import javax.inject.Singleton
 @Singleton
 class PrefDatabase @Inject constructor(@ApplicationContext val context: Context) {
 
-    private lateinit var fixedList: MutableList<String>
-    private lateinit var exceptList: MutableList<String>
+    private var fixedList: MutableList<String> = arrayListOf()
+    private var exceptList: MutableList<String> = arrayListOf()
 
     init {
         try {

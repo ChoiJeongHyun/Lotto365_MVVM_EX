@@ -1,6 +1,5 @@
 package kr.co.example.lotto365.commonset.components
 
-import android.app.Activity
 import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
@@ -10,8 +9,6 @@ import dagger.android.HasAndroidInjector
 import kr.co.example.lotto365.miniframework.database.dbmanager.AppDatabase
 import kr.co.example.lotto365_mvp.MiniFrameWork.Manager.FontManager
 import kr.co.example.lotto365_mvvm.di.component.DaggerAppComponent
-import kr.co.example.lotto365_mvvm.di.module.AppModule
-import kr.co.example.lotto365_mvvm.miniframework.DataBase.PrefDatabase
 import javax.inject.Inject
 
 
@@ -28,7 +25,7 @@ class LottoApplication : MultiDexApplication(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().application(this).appModule(AppModule(this)).build()
+        DaggerAppComponent.builder().application(this).build()
             .inject(this)
         initLoader()
 

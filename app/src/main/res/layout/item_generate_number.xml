@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="kr.co.example.lotto365_mvp.Utils.Utils"/>
+        <import type="android.graphics.Color"/>
+
+        <variable
+            name="vm"
+            type="kr.co.example.lotto365_mvvm.views.p3_generate_number.RandomNumberViewModel" />
+
+        <variable
+            name="item"
+            type="java.util.ArrayList&lt;String&gt;" />
+
+    </data>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:backgroundColor="@color/box_background_color"
+        app:cornerRadius="8dp">
+
+        <kr.co.example.lotto365_mvvm.widgets.RoundButton
+            android:id="@+id/item_view_btn_generate_number"
+            android:layout_width="76dp"
+            android:layout_height="36dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6dp"
+            android:gravity="center"
+            android:text="저장"
+            android:textSize="20dp"
+            app:onClickListener="@{() -> vm.saveNumber(item)}"
+            app:backgroundColorNormal="#4B46BE"
+            app:cornerRadius="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/item_view_btn_generate_number">
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[0]}"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[0]}"/>
+
+<!--            android:textColor="@{Utils.Companion.getNumberColor(Integer.valueOf(item[0]))}"-->
+<!--            android:textColor="@{vm.testText.get(0) == `1` ? Color.parseColor(`#FFFFFF`) : Color.parseColor(`#FFF000`)}"-->
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[1]}"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[1]}"/>
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[2]}"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[2]}"/>
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[3]}"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[3]}"/>
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[4]}"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[4]}"/>
+
+            <TextView
+                android:id="@+id/item_view_text_generate_number_number6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@{item[5]}"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textSize="26dp"
+                android:gravity="center"
+                app:isNumber="@{item[5]}"/>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout>
+
+</RelativeLayout>
+
+</layout>

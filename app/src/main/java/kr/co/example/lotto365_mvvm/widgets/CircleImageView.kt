@@ -36,6 +36,8 @@ class CircleImageView : AppCompatImageView {
         init()
     }
 
+//    constructor(context: Context , attributeSet: AttributeSet?) : this(context, attributeSet, 0)
+
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int = 0) : super(context, attrs, defStyle) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.CircleImageView, defStyle, 0)

@@ -1,4 +1,4 @@
-package kr.co.example.lotto365_mvvm.miniframework.DataBase.Converter
+package kr.co.example.lotto365_mvvm.miniframework.database.Converter
 
 import androidx.room.TypeConverter
 import com.google.gson.Gson

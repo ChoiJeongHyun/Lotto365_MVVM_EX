@@ -23,9 +23,30 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.p2_main.MainActivity"
+        <activity
+            android:name=".views.p2_main.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".views.p3_generate_number.GenerateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".views.p3_generate_number.RandomGenerateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".views.p3_generate_number.RandomNumberActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".views.p4_history_number.HistoryNumberActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

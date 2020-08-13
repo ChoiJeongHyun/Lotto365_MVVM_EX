@@ -1,17 +1,17 @@
 package kr.co.example.lotto365_mvvm.views.p1_splash
 
-import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.iid.FirebaseInstanceId
-import io.reactivex.Single
 import kr.co.example.lotto365_mvp.Utils.PLog
 import kr.co.example.lotto365_mvp.Utils.Utils
 import kr.co.example.lotto365_mvvm.common.components.BaseViewModel
+import kr.co.example.lotto365_mvvm.repository.AppRepository
 import kr.co.example.lotto365_mvvm.utils.SingleLiveEvent
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor() : BaseViewModel() {
+//@Inject constructor(appDatabase: AppDatabase, prefDatabase: PrefDatabase)
+class SplashViewModel @Inject constructor(private val appRepository: AppRepository) : BaseViewModel() {
 
     private val _startActivityCall = SingleLiveEvent<Boolean>()
 
@@ -19,12 +19,17 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
         get() = _startActivityCall
 
 
+
+
     fun setFcm() {
+
 
         FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
             if (!it.isSuccessful) {
                 return@addOnCompleteListener
             }
+
+
 
             it.result?.let { result ->
                 if (appRepository.getPrefToken() == "") {
@@ -43,7 +48,13 @@ class SplashViewModel @Inject constructor() : BaseViewModel() {
     }
 
     override fun onClick(any: Any) {
-        TODO("Not yet implemented")
+
     }
+
+    override fun toolbarEvent(position: Int, any: Any?) {
+
+    }
+
+
 
 }

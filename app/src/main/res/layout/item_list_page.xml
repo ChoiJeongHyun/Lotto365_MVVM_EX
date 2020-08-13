@@ -17,8 +17,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{() -> vm.onClick(item)}">
+        android:layout_height="wrap_content">
 
         <kr.co.example.lotto365_mvvm.widgets.RoundButton
             android:id="@+id/item_view_btn_list_page"
@@ -31,7 +30,11 @@
             android:visibility="visible"
             app:backgroundColorNormal="@color/box_background_color"
             app:cornerRadius="16dp"
-            app:textColorNormal="#9AA2B3" />
+            app:textColorNormal="#9AA2B3"
+            app:onClickListener="@{() -> vm.onClick(item)}" />
+
+<!--        app:params="@{item}"-->
+<!--        app:viewModel="@{vm}"-->
 
         <kr.co.example.lotto365_mvvm.widgets.ShadowView
             android:layout_width="match_parent"

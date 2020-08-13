@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="kr.co.example.lotto365_mvvm.views.p3_generate_number.RandomGenerateViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
+
+        <kr.co.example.lotto365_mvvm.widgets.ToolBar
+            android:id="@+id/view_random_generate_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"
+            app:toolbarLeftSrc="@drawable/icon_toolbar_back"
+            app:toolbarTitle="랜덤 생성"
+            app:leftClick="@{true}"
+            app:viewModel="@{vm}"
+            />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/view_random_generate_adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_random_generate_toolbar"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/admob_app_test_banner_id" />
+
+        <View
+            android:id="@+id/view_random_generate_area_adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/view_random_generate_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/view_random_generate_area_adView">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout
+                    android:id="@+id/view_random_generate_group_fixed_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:onClick="@{() ->vm.onClick(`고정번호`)}"
+                    app:backgroundColor="@color/box_background_color"
+                    app:cornerRadius="8dp">
+
+                    <TextView
+                        android:id="@+id/view_random_generate_view1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/view_random_generate_adView"
+                        android:gravity="center"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp"
+                        android:text="고정번호"
+                        android:textColor="#a199e4"
+                        android:textSize="18dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/view_random_generate_fixed_number_listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toRightOf="@id/view_random_generate_view1"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:numbers="@{vm.fixedNumbers}"
+                        app:spanCount="6"
+                        app:viewModel="@{vm}" />
+
+                </kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout>
+
+
+                <kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout
+                    android:id="@+id/view_random_generate_group_except_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view_random_generate_group_fixed_number"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:minHeight="60dp"
+                    android:onClick="@{() ->vm.onClick(`제외번호`)}"
+                    app:backgroundColor="@color/box_background_color"
+                    app:cornerRadius="8dp">
+
+                    <TextView
+                        android:id="@+id/view_random_generate_view2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view_random_generate_adView"
+                        android:paddingStart="4dp"
+                        android:paddingTop="18dp"
+                        android:paddingEnd="4dp"
+                        android:text="제외번호"
+                        android:textColor="#a199e4"
+                        android:textSize="18dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/view_random_generate_except_number_listView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/view_random_generate_view2"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:numbers="@{vm.exceptNumbers}"
+                        app:spanCount="6"
+                        app:viewModel="@{vm}" />
+
+
+                </kr.co.example.lotto365_mvvm.widgets.RoundRelativeLayout>
+
+
+                <kr.co.example.lotto365_mvvm.widgets.RoundButton
+                    android:id="@+id/view_random_generate_btn_generate_number"
+                    android:layout_width="250dp"
+                    android:layout_height="54dp"
+                    android:layout_below="@id/view_random_generate_group_except_number"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:gravity="center"
+                    android:text="번호 생성"
+                    android:textSize="20dp"
+                    app:backgroundColorNormal="#4B46BE"
+                    app:cornerRadius="16dp"
+                    app:onClickListener="@{() -> vm.onClick(1)}"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@id/view_random_generate_btn_generate_number" />
+
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+</layout>

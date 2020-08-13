@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.graphics.Color" />
+
+        <import type="android.graphics.drawable.ColorDrawable" />
+
+        <import type="kr.co.example.lotto365_mvp.Utils.Utils" />
+
+        <variable
+            name="number"
+            type="kr.co.example.lotto365.vo.Number" />
+
+        <variable
+            name="vm"
+            type="kr.co.example.lotto365_mvvm.views.p3_generate_number.RandomGenerateViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="@{() ->vm.numberPopupItemClick(number)}">
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="6dp">
+
+            <kr.co.example.lotto365_mvvm.widgets.CircleImageView
+                android:id="@+id/item_view_circle_popup_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:isFixed="@{vm.isFixed()}"
+                app:numberItem="@{number}" />
+
+            <TextView
+                android:id="@+id/item_view_text_number_popup_number"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:isFixed="@{vm.isFixed()}"
+                app:numberItem="@{number}" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

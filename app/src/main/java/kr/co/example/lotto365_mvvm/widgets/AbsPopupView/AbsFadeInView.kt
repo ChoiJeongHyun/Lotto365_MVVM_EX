@@ -10,6 +10,7 @@ import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.lifecycle.ViewModelProvider
 import kr.co.example.lotto365.commonset.components.LottoActivity
 import kr.co.example.lotto365_mvp.Utils.Utils
 import java.util.*
@@ -31,6 +32,7 @@ abstract class AbsFadeInView(private val context: Context) : PopupView, View.OnC
     }
 
     private fun viewInit() {
+
         background = View(context)
         contentView = contentView()
 

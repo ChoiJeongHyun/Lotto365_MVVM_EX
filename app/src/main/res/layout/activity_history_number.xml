@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="kr.co.example.lotto365_mvvm.views.p4_history_number.HistoryNumberViewModel" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_color">
+
+        <kr.co.example.lotto365_mvvm.widgets.ToolBar
+            android:id="@+id/view_history_number_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"
+            app:leftClick="@{true}"
+            app:toolbarLeftSrc="@drawable/icon_toolbar_back"
+            app:toolbarTitle="내 번호"
+            app:viewModel="@{vm}" />
+
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/view_history_number_adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_history_number_toolbar"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/admob_app_test_banner_id" />
+
+        <View
+            android:id="@+id/view_history_number_area_adView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/view_history_number_toolbar" />
+
+        <TextView
+            android:id="@+id/view_history_number_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/view_history_number_btn_clear_number"
+            android:layout_below="@id/view_history_number_area_adView"
+            android:gravity="center"
+            android:text="리스트가 존재하지 않습니다:)"
+            android:textColor="@color/text_color"
+            android:textSize="20dp"
+            android:visibility="@{vm.historyItems.size() == 0 ? View.VISIBLE : View.GONE}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/view_history_number_listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/view_history_number_btn_clear_number"
+            android:layout_below="@id/view_history_number_area_adView"
+            app:historyItems="@{vm.historyItems}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:viewModel="@{vm}" />
+
+
+        <kr.co.example.lotto365_mvvm.widgets.RoundButton
+            android:id="@+id/view_history_number_btn_clear_number"
+            android:layout_width="250dp"
+            android:layout_height="54dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="전체 삭제"
+            android:textSize="20dp"
+            app:backgroundColorNormal="#4B46BE"
+            app:cornerRadius="16dp"
+            app:onClickListener="@{()->vm.historyAllRemove()}" />
+
+
+    </RelativeLayout>
+
+</layout>

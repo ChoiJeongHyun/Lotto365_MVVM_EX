@@ -4,14 +4,22 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.widget.AppCompatButton
-import kr.co.example.lotto365_mvp.Utils.PLog
+import androidx.databinding.BindingMethod
+import androidx.databinding.BindingMethods
+import androidx.databinding.DataBindingUtil
 import kr.co.example.lotto365_mvvm.R
 
 
-class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int = 0) :
+@BindingMethods(BindingMethod(type = RoundButton::class, attribute = "onClickListener", method = "onClickListener"))
+class RoundButton @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet,
+    defStyleAttr: Int = 0
+) :
     AppCompatButton(context, attrs, defStyleAttr), View.OnClickListener {
 
     private var state: Int = 0
@@ -38,18 +46,28 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
 
     init {
-        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.RoundButton, defStyleAttr, 0)
-        cornerRadius = typeArray.getDimensionPixelSize(R.styleable.RoundButton_cornerRadius, -1).toFloat()
-        borderSize = typeArray.getDimensionPixelSize(R.styleable.RoundButton_borderWidth, 0).toFloat()
-        borderColorDisable = typeArray.getColor(R.styleable.RoundButton_borderColorDisable, Color.TRANSPARENT)
-        borderColorNormal = typeArray.getColor(R.styleable.RoundButton_borderColorNormal, Color.TRANSPARENT)
-        borderColorHighlight = typeArray.getColor(R.styleable.RoundButton_borderColorHighlight, Color.TRANSPARENT)
-        backgroundColorDisable = typeArray.getColor(R.styleable.RoundButton_backgroundColorDisable, Color.TRANSPARENT)
-        backgroundColorNormal = typeArray.getColor(R.styleable.RoundButton_backgroundColorNormal, Color.TRANSPARENT)
-        backgroundColorHighlight = typeArray.getColor(R.styleable.RoundButton_backgroundColorHighlight, Color.TRANSPARENT)
+        val typeArray =
+            context.obtainStyledAttributes(attrs, R.styleable.RoundButton, defStyleAttr, 0)
+        cornerRadius =
+            typeArray.getDimensionPixelSize(R.styleable.RoundButton_cornerRadius, -1).toFloat()
+        borderSize =
+            typeArray.getDimensionPixelSize(R.styleable.RoundButton_borderWidth, 0).toFloat()
+        borderColorDisable =
+            typeArray.getColor(R.styleable.RoundButton_borderColorDisable, Color.TRANSPARENT)
+        borderColorNormal =
+            typeArray.getColor(R.styleable.RoundButton_borderColorNormal, Color.TRANSPARENT)
+        borderColorHighlight =
+            typeArray.getColor(R.styleable.RoundButton_borderColorHighlight, Color.TRANSPARENT)
+        backgroundColorDisable =
+            typeArray.getColor(R.styleable.RoundButton_backgroundColorDisable, Color.TRANSPARENT)
+        backgroundColorNormal =
+            typeArray.getColor(R.styleable.RoundButton_backgroundColorNormal, Color.TRANSPARENT)
+        backgroundColorHighlight =
+            typeArray.getColor(R.styleable.RoundButton_backgroundColorHighlight, Color.TRANSPARENT)
         textColorDisable = typeArray.getColor(R.styleable.RoundButton_textColorDisable, Color.WHITE)
         textColorNormal = typeArray.getColor(R.styleable.RoundButton_textColorNormal, Color.WHITE)
-        textColorHighlight = typeArray.getColor(R.styleable.RoundButton_textColorHighlight, Color.WHITE)
+        textColorHighlight =
+            typeArray.getColor(R.styleable.RoundButton_textColorHighlight, Color.WHITE)
         backgroundColorGradientStart = typeArray.getColor(
             R.styleable.RoundButton_backgroundColorNormalGradientStart, Color.TRANSPARENT
         )
@@ -58,6 +76,8 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
         )
         typeArray.recycle()
         viewInit()
+
+
     }
 
     fun viewInit() {
@@ -76,6 +96,8 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
         super.setBackgroundColor(Color.TRANSPARENT)
         super.setTextColor(textColorNormal)
 
+
+
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -84,7 +106,8 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
         height = h.toFloat()
         radius = cornerRadius
 
-        if (radius == 0f) radius = if (height > width) (width - borderSize) / 2f else (height - borderSize) / 2f
+        if (radius == 0f) radius =
+            if (height > width) (width - borderSize) / 2f else (height - borderSize) / 2f
         setMeasuredDimension(
             MeasureSpec.getSize(width.toInt()), MeasureSpec.getSize(height.toInt())
         )
@@ -124,7 +147,8 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
     @SuppressLint("DrawAllocation")
     override fun onDraw(canvas: Canvas?) {
         radius = cornerRadius
-        if (radius == 0f) radius = if (height > width) (width - borderSize) / 2f else (height - borderSize) / 2f
+        if (radius == 0f) radius =
+            if (height > width) (width - borderSize) / 2f else (height - borderSize) / 2f
 
         if (!this.isEnabled) {
             paintBack.color = backgroundColorDisable
@@ -132,13 +156,19 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
             canvas?.drawRoundRect(
                 RectF(
-                    borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                    borderSize / 2f,
+                    borderSize / 2f,
+                    width - borderSize / 2f,
+                    height - borderSize / 2f
                 ), radius, radius, paintBack
             )
 
             canvas?.drawRoundRect(
                 RectF(
-                    borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                    borderSize / 2f,
+                    borderSize / 2f,
+                    width - borderSize / 2f,
+                    height - borderSize / 2f
                 ), radius, radius, paintBoard
             )
         }
@@ -153,13 +183,19 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 paintBoard.color = borderColorHighlight
                 canvas?.drawRoundRect(
                     RectF(
-                        borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                        borderSize / 2f,
+                        borderSize / 2f,
+                        width - borderSize / 2f,
+                        height - borderSize / 2f
                     ), radius, radius, paintBack
                 )
 
                 canvas?.drawRoundRect(
                     RectF(
-                        borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                        borderSize / 2f,
+                        borderSize / 2f,
+                        width - borderSize / 2f,
+                        height - borderSize / 2f
                     ), radius, radius, paintBoard
                 )
             }
@@ -170,20 +206,32 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
                 if (backgroundColorGradientStart != Color.TRANSPARENT && backgroundColorGradientEnd != Color.TRANSPARENT) {
                     val gradient = LinearGradient(
-                        0f, 0f, width, 0f, backgroundColorGradientStart, backgroundColorGradientEnd, Shader.TileMode.CLAMP
+                        0f,
+                        0f,
+                        width,
+                        0f,
+                        backgroundColorGradientStart,
+                        backgroundColorGradientEnd,
+                        Shader.TileMode.CLAMP
                     )
                     paintBack.isDither = true
                     paintBack.shader = gradient
                 }
                 canvas?.drawRoundRect(
                     RectF(
-                        borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                        borderSize / 2f,
+                        borderSize / 2f,
+                        width - borderSize / 2f,
+                        height - borderSize / 2f
                     ), radius, radius, paintBack
                 )
 
                 canvas?.drawRoundRect(
                     RectF(
-                        borderSize / 2f, borderSize / 2f, width - borderSize / 2f, height - borderSize / 2f
+                        borderSize / 2f,
+                        borderSize / 2f,
+                        width - borderSize / 2f,
+                        height - borderSize / 2f
                     ), radius, radius, paintBoard
                 )
 
@@ -200,7 +248,6 @@ class RoundButton @JvmOverloads constructor(context: Context, attrs: AttributeSe
 
     @SuppressLint("ClickableViewAccessibility")
     private val onTouchListener = OnTouchListener { _, event ->
-        PLog.e("onTouch call")
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 state = event.action

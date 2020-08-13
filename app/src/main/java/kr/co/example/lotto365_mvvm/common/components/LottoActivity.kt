@@ -57,6 +57,7 @@ abstract class LottoActivity<T : ViewDataBinding> : FragmentActivity(), View.OnC
         super.setContentView(contentV)
         setStatusColor()
         binding = DataBindingUtil.setContentView(this, getLayoutId())
+
     }
 
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
+import kr.co.example.lotto365_mvp.Utils.PLog
 import kr.co.example.lotto365_mvp.Utils.Utils
 import kr.co.example.lotto365_mvvm.R
 
@@ -215,6 +216,11 @@ class ToolBar @JvmOverloads constructor(
         this.onToolBarClickListener = onToolBarClickListener
     }
 
+
+    fun setOnToolBarClickListener(function: (s: Int, ss: Int) -> String) {
+
+    }
+
     fun setLeftButton(buttonItem: ButtonItem) {
 
         viewLeftImage?.let {
@@ -243,6 +249,9 @@ class ToolBar @JvmOverloads constructor(
             buttonItems.add(buttonItem)
         }
     }
+
+    fun getLeftImage() = viewLeftImage
+    fun getRightImage() = viewRightImage
 
 
     class ButtonItem {
@@ -273,12 +282,15 @@ class ToolBar @JvmOverloads constructor(
         buttonItems.let {
             for (i in it.indices) {
                 if (Utils.equals(it[i].view, v)) {
-                    onToolBarClickListener!!.let { its ->
+                    onToolBarClickListener?.let { its ->
                         its.onToolBarClick(it[i].tag, v)
+                    } ?: run {
+
                     }
                 }
             }
         }
     }
+
 
 }
